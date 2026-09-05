@@ -1,0 +1,2175 @@
+/* src/App.css */
+
+/* =========================================
+   1. GLOBAL VARIABLES & THEME
+   ========================================= */
+:root {
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  --danger-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  --info-gradient: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  --dark-gradient: linear-gradient(135deg, #434343 0%, #000000 100%);
+
+  /* Colors & Design Tokens */
+  --bg-color: #f8fafc;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-secondary: #f1f5f9;
+  --border: #e2e8f0;
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --shadow-md: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.11), 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   2. GLOBAL RESETS & TYPOGRAPHY
+   ========================================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* =========================================
+   3. MODERN CARD STYLING
+   ========================================= */
+.custom-card, .card, .product-card, .feature-card {
+  border: none !important;
+  border-radius: 16px !important;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden; /* Keeps header corners rounded */
+}
+
+.custom-card:hover, .card:hover, .product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card Headers */
+.card-header-modern, .card-header {
+  color: white !important;
+  border-bottom: none;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  letter-spacing: 0.5px;
+  /* Default background if inline style is missing */
+  background: var(--primary-gradient); 
+}
+
+/* =========================================
+   4. MODERN BUTTON STYLING
+   ========================================= */
+.btn-modern, .btn {
+  border-radius: 50px !important;
+  padding: 10px 25px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-modern:hover, .btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  opacity: 0.95;
+}
+
+/* Gradient Button Variations */
+.btn-primary-modern, .btn-primary {
+  background-image: var(--primary-gradient) !important;
+  color: white !important;
+}
+
+.btn-warning-modern, .btn-warning {
+  background-image: var(--secondary-gradient) !important;
+  color: #1a202c !important;
+}
+
+.btn-success { background-image: var(--success-gradient) !important; border: none; }
+.btn-danger { background-image: var(--danger-gradient) !important; border: none; }
+.btn-info { background-image: var(--info-gradient) !important; color: white !important; }
+
+/* =========================================
+   5. MODERN TABLE STYLING
+   ========================================= */
+.table-modern, .table {
+  border-collapse: separate;
+  border-spacing: 0 8px; /* Spacing between rows */
+  background-color: transparent !important;
+}
+
+.table-modern thead th, .table thead th {
+  border: none;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #8898aa;
+  background-color: transparent !important;
+  padding: 10px 15px;
+}
+
+.table-modern tbody tr, .table tbody tr {
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+
+.table-modern tbody tr:hover, .table tbody tr:hover {
+  transform: scale(1.01);
+  z-index: 2;
+}
+
+.table-modern td, .table td {
+  border: none;
+  vertical-align: middle;
+  padding: 15px !important;
+}
+
+/* Round corners for table rows */
+.table-modern td:first-child, .table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.table-modern td:last-child, .table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* =========================================
+   6. PRODUCT IMAGE ZOOM EFFECT
+   ========================================= */
+.product-img-container {
+  overflow: hidden;
+}
+
+.product-img-hover {
+  transition: transform 0.5s ease;
+}
+
+.custom-card:hover .product-img-hover {
+  transform: scale(1.1);
+}
+
+/* =========================================
+   7. FORMS & BADGES
+   ========================================= */
+.form-control, .form-select {
+  border-radius: 10px !important;
+  border: 1px solid #e2e8f0;
+  padding: 10px 15px;
+  box-shadow: none;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.badge {
+  padding: 0.5em 0.8em !important;
+  border-radius: 6px !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   8. ANIMATION UTILS
+   ========================================= */
+/* =========================================
+   8. ANIMATION UTILS
+   ========================================= */
+.animate__fadeInUp {
+  animation-duration: 0.8s;
+}
+
+/* =========================================
+   9. SHOPEASE LANDING PAGE SPECIFIC STYLES
+   ========================================= */
+.shopease-top-banner {
+  background-color: #0b0f19;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  position: relative;
+  text-align: center;
+  z-index: 1050;
+  letter-spacing: 0.3px;
+}
+
+.shopease-top-banner .close-btn {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.shopease-top-banner .close-btn:hover {
+  opacity: 1;
+}
+
+.shopease-navbar {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid #f1f3f7;
+  padding: 15px 0 !important;
+}
+
+.shopease-brand {
+  color: #0b0f19 !important;
+  font-size: 1.6rem !important;
+  letter-spacing: -0.5px;
+}
+
+.shopease-brand-logo {
+  color: #2b6cb0;
+  margin-right: 8px;
+}
+
+.shopease-dropdown-btn {
+  background-color: #f7fafc !important;
+  background-image: none !important; /* Removes the primary violet gradient */
+  border: 1px solid #e2e8f0 !important;
+  color: #4a5568 !important;
+  border-radius: 8px !important; /* Fully rounded on all corners */
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  padding: 10px 15px !important;
+  box-shadow: none !important;
+}
+
+.shopease-dropdown-btn:hover {
+  background-color: #edf2f7 !important;
+  color: #2b6cb0 !important;
+}
+
+.shopease-search-input {
+  border: 1px solid #e2e8f0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  background-color: #f7fafc !important;
+  padding: 10px 20px !important;
+  font-size: 0.9rem !important;
+  box-shadow: none !important;
+  color: #4a5568;
+}
+
+.shopease-search-btn {
+  background-color: #2b6cb0 !important;
+  color: white !important;
+  border-radius: 0 8px 8px 0 !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  font-size: 0.9rem !important;
+  box-shadow: none !important;
+}
+
+.shopease-search-btn:hover {
+  background-color: #2b5c8f !important;
+}
+
+.shopease-nav-link {
+  color: #4a5568 !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem;
+  margin: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.shopease-nav-link:hover {
+  color: #2b6cb0 !important;
+}
+
+.shopease-cart-badge {
+  background-color: #2b6cb0 !important;
+  color: white !important;
+  border-radius: 50% !important;
+  padding: 3px 6px !important;
+  font-size: 0.75rem !important;
+}
+
+.shopease-login-btn {
+  background-image: var(--primary-gradient) !important;
+  border: none !important;
+  color: #ffffff !important; /* White text for contrast on violet background */
+  border-radius: 8px !important;
+  padding: 8px 20px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shopease-login-btn:hover {
+  opacity: 0.9;
+  color: white !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(118, 75, 162, 0.25) !important;
+}
+
+/* Hero Section */
+.shopease-hero-section {
+  background: linear-gradient(135deg, #f5f8ff 0%, #ffffff 100%);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.shopease-hero-title {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  color: #0b0f19;
+  margin-bottom: 20px;
+}
+
+.shopease-hero-title span.blue-text {
+  color: #2b6cb0;
+}
+
+.shopease-hero-subtext {
+  color: #718096;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  max-width: 520px;
+}
+
+.shopease-btn-blue {
+  background-color: #2b6cb0 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 14px 30px !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  box-shadow: 0 4px 14px rgba(43, 108, 176, 0.3) !important;
+}
+
+.shopease-btn-blue:hover {
+  background-color: #2b5c8f !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(43, 108, 176, 0.4) !important;
+}
+
+.shopease-btn-outline-gray {
+  background-image: var(--primary-gradient) !important;
+  border: none !important;
+  color: #ffffff !important; /* White text for contrast on violet background */
+  border-radius: 8px !important;
+  padding: 14px 30px !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 15px;
+}
+
+.shopease-btn-outline-gray:hover {
+  opacity: 0.9;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(118, 75, 162, 0.3) !important;
+}
+
+/* Avatar Trust Group */
+.shopease-trust-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 45px;
+}
+
+.shopease-avatar-group {
+  display: flex;
+}
+
+.shopease-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: -12px;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.shopease-avatar:first-child {
+  margin-left: 0;
+}
+
+.shopease-trust-text {
+  color: #718096;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Floating Features Bar */
+.shopease-features-bar {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  border: 1px solid #edf2f7;
+  padding: 30px 40px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+}
+
+.shopease-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.shopease-feature-icon-wrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.shopease-feature-icon-wrapper.green {
+  background-color: #f0fdf4;
+  color: #15803d;
+}
+
+.shopease-feature-icon-wrapper.blue {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.shopease-feature-icon-wrapper.purple {
+  background-color: #faf5ff;
+  color: #7e22ce;
+}
+
+.shopease-feature-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0b0f19;
+  margin-bottom: 6px;
+}
+
+.shopease-feature-desc {
+  color: #718096;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-bottom: 0;
+}
+
+.shopease-divider {
+  width: 1px;
+  height: 60px;
+  background-color: #edf2f7;
+  align-self: center;
+}
+
+/* Category Grid */
+.shopease-category-card {
+  background-color: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 16px;
+  padding: 25px 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.shopease-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border-color: #cbd5e0;
+}
+
+.shopease-category-icon-bg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto 15px auto;
+  transition: transform 0.3s ease;
+}
+
+.shopease-category-card:hover .shopease-category-icon-bg {
+  transform: scale(1.1);
+}
+
+.shopease-category-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+/* Footer Bottom Bar */
+.shopease-footer-info-bar {
+  background-color: #f8faff;
+  border-top: 1px solid #edf2f7;
+  padding: 40px 0;
+}
+
+.shopease-info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+
+.shopease-info-icon {
+  font-size: 1.8rem;
+  color: #2b6cb0;
+}
+
+.shopease-info-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0b0f19;
+  margin-bottom: 2px;
+}
+
+.shopease-info-subtext {
+  color: #718096;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Arrow controls */
+.shopease-carousel-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e0;
+  background-color: #ffffff;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.shopease-carousel-arrow:hover {
+  background-color: #2b6cb0;
+  color: white;
+  border-color: #2b6cb0;
+}
+
+/* Modern Login Page Custom Styling */
+.shopease-login-bg-circle {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  right: -50px;
+  bottom: 80px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shopease-feature-item-vertical {
+  position: relative;
+  z-index: 2;
+}
+
+.shopease-login-illustration-container {
+  position: absolute;
+  right: -20px;
+  bottom: 60px;
+  width: 380px;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.95;
+  animation: floatIllustration 6s ease-in-out infinite;
+}
+
+@keyframes floatIllustration {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.shopease-login-illustration-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.shopease-login-card {
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #f1f3f7 !important;
+}
+
+.shopease-login-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
+}
+
+.shopease-login-submit-btn {
+  background-image: var(--primary-gradient) !important;
+  border: none !important;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(118, 75, 162, 0.2) !important;
+}
+
+.shopease-login-submit-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(118, 75, 162, 0.3) !important;
+}
+
+.shopease-oauth-btn {
+  transition: all 0.2s;
+}
+
+.shopease-oauth-btn:hover {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e0 !important;
+  transform: translateY(-1px);
+}
+
+/* Signup Page Watermark styling */
+.shopease-signup-container {
+  overflow: hidden;
+}
+
+.shopease-signup-watermark {
+  position: absolute;
+  color: rgba(118, 75, 162, 0.035); /* Very light faint violet cart watermark */
+  font-size: 8rem;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
+
+.watermark-1 { top: 10%; left: 8%; transform: rotate(15deg); }
+.watermark-2 { top: 60%; left: 5%; transform: rotate(-25deg); font-size: 6rem; }
+.watermark-3 { top: 12%; right: 10%; transform: rotate(-10deg); font-size: 7rem; }
+.watermark-4 { top: 55%; right: 6%; transform: rotate(20deg); }
+.watermark-5 { bottom: 5%; left: 30%; transform: rotate(45deg); font-size: 5rem; }
+.watermark-6 { bottom: 8%; right: 35%; transform: rotate(-30deg); font-size: 5.5rem; }
+
+/* Custom Styled Input Group for ShopEase Form fields */
+.shopease-input-group {
+  border: 1px solid #cbd5e0 !important;
+  border-radius: 10px !important;
+  background-color: #ffffff !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+  display: flex !important;
+  align-items: center !important;
+  overflow: hidden !important;
+}
+
+.shopease-input-group:focus-within {
+  border-color: #764ba2 !important; /* Matches violet theme */
+  box-shadow: 0 0 0 0.25rem rgba(118, 75, 162, 0.2) !important;
+}
+
+.shopease-input-group .input-group-text {
+  background-color: transparent !important;
+  border: none !important;
+  color: #a0aec0 !important;
+  padding-left: 14px !important;
+  padding-right: 10px !important;
+}
+
+.shopease-input-group .form-control,
+.shopease-input-group .form-select {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  padding: 10px 14px !important;
+  font-size: 0.95rem !important;
+  color: #4a5568 !important;
+}
+
+.shopease-input-group .form-control:focus,
+.shopease-input-group .form-select:focus {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+/* =========================================
+   3. HYPER-MODERN ADMIN DASHBOARD STYLES
+   ========================================= */
+
+body.dark-theme {
+  --background: #080F1C !important;
+  --surface: #0F172A !important;
+  --surface-secondary: #111C2E !important;
+  --surface-tertiary: #162238 !important;
+  --border: #243247 !important;
+  --text-primary: #F8FAFC !important;
+  --text-secondary: #CBD5E1 !important;
+  --text-muted: #94A3B8 !important;
+  --primary: #818CF8 !important;
+  --primary-hover: #A5B4FC !important;
+
+  /* Accent Colors (Dark Mode) */
+  --danger: #F87171 !important;
+  --success: #34D399 !important;
+  --warning: #FBBF24 !important;
+  --info: #60A5FA !important;
+
+  /* Compatibility aliases */
+  --bg-color: var(--background) !important;
+  --card-bg: var(--surface-secondary) !important;
+  --card-hover: var(--surface-tertiary) !important;
+}
+
+/* Dark mode overrides for dynamic elements, inputs, dropdowns & borders */
+body.dark-theme .shopease-admin-header {
+  border-bottom-color: var(--border) !important;
+}
+
+body.dark-theme .bg-light {
+  background-color: var(--surface-secondary) !important;
+}
+
+body.dark-theme .border-bottom {
+  border-bottom-color: var(--border) !important;
+}
+
+body.dark-theme .border-top {
+  border-top-color: var(--border) !important;
+}
+
+body.dark-theme .text-dark {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .text-muted {
+  color: var(--text-muted) !important;
+}
+
+body.dark-theme .bg-white {
+  background-color: var(--surface) !important;
+}
+
+body.dark-theme .border {
+  border-color: var(--border) !important;
+}
+
+body.dark-theme .alert-card-row {
+  border-color: var(--border) !important;
+  background-color: var(--surface) !important;
+}
+
+body.dark-theme .alert-card-row:hover {
+  border-color: var(--primary) !important;
+  background-color: var(--surface-secondary) !important;
+}
+
+/* Modal and Dropdown overrides in dark mode */
+.modal-content {
+  background-color: var(--surface) !important;
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+}
+
+body.dark-theme .modal-content {
+  background-color: var(--surface) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+  opacity: 1 !important;
+}
+
+body.dark-theme .modal-header,
+body.dark-theme .modal-footer {
+  border-color: var(--border) !important;
+}
+
+body.dark-theme .dropdown-menu {
+  background-color: var(--surface) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+body.dark-theme .dropdown-item {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .dropdown-item:hover {
+  background-color: var(--surface-secondary) !important;
+}
+
+body.dark-theme .notification-bell-dropdown {
+  border-color: var(--border) !important;
+  background-color: var(--surface) !important;
+}
+
+body.dark-theme .notification-bell-dropdown .bg-light {
+  background-color: var(--surface-secondary) !important;
+}
+
+/* Base layouts */
+.shopease-admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Collapsible Sidebar styling */
+.shopease-sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background-color: #0c1222 !important; /* Premium rich dark navy */
+  color: #94a3b8 !important;
+  transition: width 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1020;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.shopease-sidebar.collapsed {
+  width: 72px;
+}
+
+/* Hide branding and labels when collapsed */
+.shopease-sidebar.collapsed .sidebar-brand-text,
+.shopease-sidebar.collapsed .sidebar-section-title,
+.shopease-sidebar.collapsed .sidebar-label,
+.shopease-sidebar.collapsed .sidebar-badge {
+  display: none !important;
+}
+
+.shopease-sidebar.collapsed .sidebar-nav-link {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.shopease-sidebar.collapsed .sidebar-nav-link i {
+  margin-right: 0 !important;
+  font-size: 1.3rem;
+}
+
+/* Brand header */
+.shopease-sidebar-brand {
+  height: 70px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.shopease-sidebar.collapsed .shopease-sidebar-brand {
+  justify-content: center;
+  padding: 0;
+}
+
+/* Section Title */
+.sidebar-section-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  padding-left: 24px;
+}
+
+/* Sidebar Nav links */
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  color: #94a3b8 !important;
+  font-weight: 500;
+  text-decoration: none !important;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.sidebar-nav-link:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.sidebar-nav-link.active {
+  color: var(--primary) !important;
+  background: linear-gradient(90deg, rgba(99,102,241,.22), rgba(99,102,241,.08)) !important;
+  border-left-color: var(--primary) !important;
+  font-weight: 600;
+}
+
+/* Special Alert active link (Urgent Red Accent) */
+.sidebar-nav-link.active.alerts-link {
+  color: var(--danger) !important;
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.22), rgba(239, 68, 68, 0.08)) !important;
+  border-left-color: var(--danger) !important;
+}
+
+/* Floating Action Header */
+.shopease-admin-header {
+  height: 70px;
+  padding: 0 24px;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1010;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Notification Bell Dropdown overlay */
+.notification-bell-container {
+  position: relative;
+}
+
+.notification-bell-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  font-size: 0.65rem;
+  padding: 3px 5px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--card-bg);
+}
+
+.notification-bell-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 360px;
+  background-color: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  z-index: 1100;
+  overflow: hidden;
+  animation: slideDownIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification-dropdown-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.notification-dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Modern Alerts Cards */
+.alert-card-row {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  margin-bottom: 14px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.01) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.alert-card-row:hover {
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04) !important;
+  border-color: var(--primary) !important;
+  background-color: var(--surface-secondary) !important;
+}
+
+/* Custom styled Toggle Switch */
+.theme-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.theme-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e0;
+  transition: .3s;
+  border-radius: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+input:checked + .toggle-slider {
+  background-color: #3b82f6;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* Alerts Page Custom styling variables */
+.alert-icon-wrapper {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Warning Theme */
+.alert-icon-wrapper.warning-theme {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  color: #FBBF24 !important;
+}
+.alert-status-badge.warning-theme {
+  background-color: rgba(245, 158, 11, 0.14) !important;
+  border: 1px solid rgba(251, 191, 36, 0.25) !important;
+  color: #FBBF24 !important;
+}
+
+/* Danger Theme */
+.alert-icon-wrapper.danger-theme {
+  background-color: rgba(239, 68, 68, 0.12) !important;
+  color: #F87171 !important;
+}
+.alert-status-badge.danger-theme {
+  background-color: rgba(239, 68, 68, 0.14) !important;
+  border: 1px solid rgba(248, 113, 113, 0.25) !important;
+  color: #F87171 !important;
+}
+
+/* Info Theme */
+.alert-icon-wrapper.info-theme {
+  background-color: rgba(59, 130, 246, 0.12) !important;
+  color: #60A5FA !important;
+}
+.alert-status-badge.info-theme {
+  background-color: rgba(59, 130, 246, 0.14) !important;
+  border: 1px solid rgba(96, 165, 250, 0.25) !important;
+  color: #60A5FA !important;
+}
+
+/* Success Theme */
+.alert-icon-wrapper.success-theme {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  color: #34D399 !important;
+}
+.alert-status-badge.success-theme {
+  background-color: rgba(16, 185, 129, 0.14) !important;
+  border: 1px solid rgba(52, 211, 153, 0.25) !important;
+  color: #34D399 !important;
+}
+
+/* Dismiss Button Custom styling */
+.alert-dismiss-btn {
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  color: #F87171 !important;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 150ms ease;
+  outline: none;
+}
+
+.alert-dismiss-btn:hover {
+  background-color: rgba(239, 68, 68, 0.10) !important;
+  border-color: rgba(248, 113, 113, 0.35) !important;
+  color: #FB7185 !important;
+}
+
+.alert-dismiss-btn:active {
+  transform: scale(0.98) !important;
+}
+
+/* Responsive Overrides for Top Header and Left Collapsible Sidebar */
+@media (max-width: 767.98px) {
+  .shopease-sidebar {
+    position: fixed !important;
+    top: 72px !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 250px !important;
+    z-index: 95 !important; /* Above backdrop, below header */
+    transform: translateX(-100%);
+    transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  
+  .shopease-sidebar.mobile-open {
+    transform: translateX(0) !important;
+  }
+  
+  .shopease-main-content-wrapper {
+    margin-left: 0 !important; /* Reset margin on mobile viewport */
+  }
+
+  .shopease-sidebar-backdrop {
+    position: fixed !important;
+    top: 72px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(2, 6, 23, 0.55) !important;
+    z-index: 80 !important; /* Below sidebar and header, above page */
+  }
+}
+
+/* ShopEase Global Top Header Style */
+.shopease-navbar {
+  height: 72px !important;
+  z-index: 100 !important; /* Header is at z-index 100 */
+  position: sticky !important;
+  top: 0 !important;
+  background-color: var(--surface) !important;
+  border-bottom: 1px solid var(--border) !important;
+  display: flex !important;
+  align-items: center !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+}
+
+body.dark-theme .shopease-navbar {
+  background-color: var(--surface) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* Explicit Z-Index hierarchies */
+.shopease-sidebar {
+  z-index: 90 !important; /* Sidebar is at z-index 90 */
+}
+
+.dropdown-menu,
+.notification-bell-dropdown {
+  z-index: 200 !important; /* Dropdown is at z-index 200 */
+}
+
+.modal {
+  z-index: 1055 !important; /* Modal is at standard z-index 1055 */
+}
+
+.modal-backdrop {
+  z-index: 1040 !important; /* Backdrop sits behind the modal */
+}
+
+/* Dark Mode Header Search Input overrides */
+body.dark-theme .shopease-admin-header .input-group {
+  background-color: var(--surface-secondary) !important;
+  border-color: var(--border) !important;
+}
+
+body.dark-theme .shopease-admin-header .form-control {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .shopease-admin-header .form-control::placeholder {
+  color: var(--text-muted) !important;
+}
+
+body.dark-theme .shopease-admin-header .input-group-text {
+  color: var(--text-muted) !important;
+}
+
+/* Dark Mode Sidebar text and sections overrides */
+body.dark-theme .shopease-sidebar {
+  background-color: #0b1220 !important;
+}
+
+body.dark-theme .sidebar-nav-link {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .sidebar-nav-link:hover {
+  color: #f8fafc !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+body.dark-theme .sidebar-nav-link.active {
+  color: #f8fafc !important;
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.22), rgba(99, 102, 241, 0.08)) !important;
+  border-left-color: #6366f1 !important;
+}
+
+body.dark-theme .sidebar-nav-link.active.alerts-link {
+  color: var(--danger) !important;
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.22), rgba(239, 68, 68, 0.08)) !important;
+  border-left-color: var(--danger) !important;
+}
+
+body.dark-theme .sidebar-section-title {
+  color: #64748b !important;
+}
+
+/* ShopEase Breadcrumbs Custom Classes */
+.shopease-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.breadcrumb-parent {
+  color: var(--text-secondary);
+}
+
+.breadcrumb-separator {
+  color: #64748b;
+}
+
+.breadcrumb-current {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Global brand adjustments for dark-mode visibility */
+.shopease-brand {
+  color: var(--text-primary) !important;
+}
+
+.shopease-brand-logo {
+  color: var(--primary) !important;
+}
+
+/* Premium Logout Button styling */
+.shopease-logout-btn {
+  color: var(--danger) !important;
+  border: 1px solid rgba(248, 113, 113, 0.25) !important;
+  background-color: transparent !important;
+  border-radius: 50px !important;
+  padding: 8px 20px !important;
+  font-weight: 600 !important;
+  transition: all 150ms ease !important;
+  outline: none;
+}
+
+.shopease-logout-btn:hover {
+  background-color: rgba(248, 113, 113, 0.10) !important;
+  color: #FB7185 !important;
+  border-color: rgba(248, 113, 113, 0.45) !important;
+}
+
+.shopease-logout-btn:active {
+  transform: scale(0.98) !important;
+}
+
+/* Admin Panel Global Text & Heading Overrides */
+.shopease-admin-wrapper h1,
+.shopease-admin-wrapper h2,
+.shopease-admin-wrapper h3,
+.shopease-admin-wrapper h4,
+.shopease-admin-wrapper h5,
+.shopease-admin-wrapper h6,
+.shopease-admin-wrapper .card h3,
+.shopease-admin-wrapper .card h4,
+.shopease-admin-wrapper .card h5,
+.shopease-admin-wrapper .card .card-title,
+.shopease-admin-wrapper .card-header-modern,
+.shopease-admin-wrapper .card-header {
+  color: var(--text-primary) !important;
+}
+
+.shopease-admin-wrapper p,
+.shopease-admin-wrapper span:not(.badge),
+.shopease-admin-wrapper .text-muted {
+  color: var(--text-secondary);
+}
+
+.shopease-admin-wrapper .text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Table Text Colors in Dark Mode */
+body.dark-theme .shopease-admin-wrapper .table td,
+body.dark-theme .shopease-admin-wrapper .table th {
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+/* Dynamic Bootstrap Accent Utility Color mappings to Design tokens */
+body.dark-theme .text-primary {
+  color: var(--primary) !important;
+}
+
+body.dark-theme .text-warning {
+  color: var(--warning) !important;
+}
+
+body.dark-theme .text-danger {
+  color: var(--danger) !important;
+}
+
+body.dark-theme .text-success {
+  color: var(--success) !important;
+}
+
+body.dark-theme .text-info {
+  color: var(--info) !important;
+}
+
+/* Global card layout styles for admin pages */
+.shopease-admin-wrapper .card,
+.shopease-admin-wrapper .custom-card {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms, border-color 200ms !important;
+}
+
+.shopease-admin-wrapper .card:hover,
+.shopease-admin-wrapper .custom-card:hover {
+  background-color: var(--card-hover) !important;
+  border-color: var(--primary) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Product Management Form & Inventory Containers */
+.shopease-admin-wrapper .custom-card.border-primary {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+}
+
+.shopease-admin-wrapper .custom-card.border-secondary {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .custom-card.border-primary,
+body.dark-theme .shopease-admin-wrapper .custom-card.border-secondary {
+  background-color: #111c30 !important; /* Panel Card background #111C30 */
+  border-color: #243550 !important; /* Border #243550 */
+}
+
+/* Form Label Overrides */
+.shopease-admin-wrapper .form-label {
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .form-label {
+  color: #e2e8f0 !important; /* Label color #E2E8F0 */
+}
+
+/* Inputs, Textareas, and Control Fields overrides */
+.shopease-admin-wrapper .form-control {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  transition: border-color 200ms ease, box-shadow 200ms ease !important;
+}
+
+.shopease-admin-wrapper .form-control:hover {
+  border-color: #cbd5e0 !important;
+}
+
+.shopease-admin-wrapper .form-control:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .form-control {
+  background-color: #17233a !important; /* Input background #17233A */
+  border: 1px solid #334155 !important; /* Border #334155 */
+  color: #f8fafc !important; /* Text color #F8FAFC */
+}
+
+body.dark-theme .shopease-admin-wrapper .form-control::placeholder {
+  color: #64748b !important; /* Placeholder color #64748B */
+}
+
+body.dark-theme .shopease-admin-wrapper .form-control:hover {
+  border-color: #475569 !important; /* Hover border #475569 */
+}
+
+body.dark-theme .shopease-admin-wrapper .form-control:focus {
+  border-color: #6366f1 !important; /* Focus border #6366F1 */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* Radio buttons & Labels in Dark Theme */
+body.dark-theme .shopease-admin-wrapper .form-check-input {
+  background-color: transparent !important;
+  border-color: #64748b !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .form-check-input:checked {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .form-check-label {
+  color: #cbd5e1 !important;
+}
+
+/* Product list modern card rows */
+.shopease-inventory-header {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.shopease-product-row {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  transition: all 180ms ease !important;
+}
+
+.shopease-product-row:hover {
+  background-color: var(--surface-secondary) !important;
+  border-color: var(--primary) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.dark-theme .shopease-product-row {
+  background-color: #17233a !important; /* Row background #17233A */
+  border-color: #263653 !important; /* Border color #263653 */
+}
+
+body.dark-theme .shopease-product-row:hover {
+  background-color: #1c2a44 !important; /* Hover background #1C2A44 */
+  border-color: #3b4f70 !important; /* Hover border #3B4F70 */
+}
+
+/* Row elements typography */
+.shopease-product-name {
+  color: var(--text-primary) !important;
+  font-size: 1rem;
+}
+
+.shopease-product-price {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+}
+
+/* Quantity controls input */
+body.dark-theme .shopease-product-qty-input {
+  background-color: #0f172a !important; /* Qty background #0F172A */
+  border-color: #334155 !important; /* Qty border #334155 */
+  color: #f8fafc !important; /* Qty text #F8FAFC */
+}
+
+/* Delete Button styling */
+.shopease-product-delete-btn {
+  background-color: #ef4444 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 180ms ease !important;
+  outline: none;
+}
+
+.shopease-product-delete-btn:hover {
+  background-color: #dc2626 !important;
+  transform: translateY(-1px) !important;
+}
+
+.shopease-product-delete-btn:active {
+  transform: scale(0.97) !important;
+}
+
+/* Manage Inventory Header styling */
+body.dark-theme .shopease-admin-wrapper .custom-card.border-secondary .card-header-modern {
+  background: linear-gradient(90deg, #242424, #090909) !important;
+  color: #f8fafc !important;
+}
+
+/* Heading Accents */
+.shopease-admin-wrapper h2.text-primary.fw-bold {
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  color: var(--primary) !important;
+}
+
+body.dark-theme .shopease-admin-wrapper h2.text-primary.fw-bold {
+  color: #818cf8 !important; /* Heading color #818CF8 */
+}
+
+/* Global Table & List styling overrides inside Admin wrapper */
+.shopease-table-container {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  overflow: hidden;
+  padding: 16px !important;
+  margin-bottom: 24px;
+}
+
+body.dark-theme .shopease-table-container {
+  background-color: #111c30 !important; /* Matches card container background #111C30 */
+  border-color: #243550 !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .table,
+body.dark-theme .shopease-table-container .table {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 8px !important; /* Visual spacing between rows */
+}
+
+body.dark-theme .shopease-admin-wrapper .table tr,
+body.dark-theme .shopease-table-container .table tr {
+  background-color: #17233a !important; /* Row background matching #17233A */
+  border-bottom: none !important;
+  transition: background-color 180ms ease, border-color 180ms ease !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .table td,
+body.dark-theme .shopease-table-container .table td,
+body.dark-theme .shopease-admin-wrapper .table th,
+body.dark-theme .shopease-table-container .table th {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  border-color: #263653 !important;
+  padding: 16px 20px !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .table thead tr,
+body.dark-theme .shopease-table-container .table thead tr {
+  background-color: transparent !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .table thead th,
+body.dark-theme .shopease-table-container .table thead th {
+  color: var(--text-muted) !important;
+  border-bottom: 2px solid var(--border) !important;
+  background-color: transparent !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .table tbody tr,
+body.dark-theme .shopease-table-container .table tbody tr {
+  border-radius: 10px !important;
+}
+
+body.dark-theme .shopease-admin-wrapper .table tbody tr:hover,
+body.dark-theme .shopease-table-container .table tbody tr:hover {
+  background-color: #1c2a44 !important; /* Hover row background matching #1C2A44 */
+  border-color: #3b4f70 !important;
+}
+
+/* Form select fields overrides */
+body.dark-theme .shopease-admin-wrapper select.form-select,
+body.dark-theme .shopease-admin-wrapper select.form-control {
+  background-color: #17233a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+/* Prediction Banner Info Alert Custom Card */
+.shopease-prediction-banner {
+  background-color: #e0f2fe; /* Light blue */
+  border: 1px solid #bae6fd;
+  color: #0369a1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.shopease-prediction-banner strong {
+  color: #0284c7;
+  font-weight: 700;
+}
+
+body.dark-theme .shopease-prediction-banner {
+  background-color: #17233a !important; /* Banner background #17233A */
+  border: 1px solid #334155 !important; /* Border #334155 */
+  color: #cbd5e1 !important; /* Text #CBD5E1 */
+}
+
+body.dark-theme .shopease-prediction-banner strong {
+  color: #60a5fa !important; /* Highlight units #60A5FA */
+}
+
+/* Modal styling overrides for Trend Modal */
+.shopease-trend-modal .modal-content {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+body.dark-theme .shopease-trend-modal .modal-content {
+  background-color: #0b1220 !important; /* Modal background #0B1220 */
+  border-color: #263653 !important; /* Border #263653 */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Modal Headers */
+.shopease-trend-modal .modal-header {
+  border-bottom: 1px solid var(--border) !important;
+  padding: 20px 24px !important;
+}
+
+body.dark-theme .shopease-trend-modal .modal-header {
+  border-bottom-color: #263653 !important;
+}
+
+/* Modal Title typography override */
+.shopease-trend-modal .modal-title {
+  color: var(--text-primary) !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+
+body.dark-theme .shopease-trend-modal .modal-title .text-primary {
+  color: #818cf8 !important; /* Product name color #818CF8 or #A5B4FC */
+}
+
+/* Close/X button in header */
+body.dark-theme .shopease-trend-modal .btn-close {
+  filter: invert(1) grayscale(1) brightness(1.5) !important;
+}
+
+/* Footer & Close button */
+.shopease-trend-modal .modal-footer {
+  border-top: 1px solid var(--border) !important;
+  padding: 16px 24px !important;
+}
+
+body.dark-theme .shopease-trend-modal .modal-footer {
+  border-top-color: #263653 !important;
+}
+
+.shopease-trend-modal .modal-footer .btn-secondary {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 8px 20px !important;
+  transition: all 200ms ease !important;
+  outline: none;
+}
+
+.shopease-trend-modal .modal-footer .btn-secondary:hover {
+  background-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+body.dark-theme .shopease-trend-modal .modal-footer .btn-secondary {
+  background-color: #1e293b !important; /* Close button background #1E293B */
+  color: #e2e8f0 !important; /* Text color #E2E8F0 */
+  border: 1px solid #334155 !important; /* Border #334155 */
+}
+
+body.dark-theme .shopease-trend-modal .modal-footer .btn-secondary:hover {
+  background-color: #334155 !important; /* Hover background #334155 */
+  color: #ffffff !important;
+}
+
+/* User Dashboard Layout Wrappers */
+.shopease-user-dashboard-wrapper {
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef) !important;
+  min-height: calc(100vh - 72px) !important;
+  transition: background 250ms ease !important;
+}
+
+body.dark-theme .shopease-user-dashboard-wrapper {
+  background: linear-gradient(to bottom, var(--background), var(--surface-secondary)) !important;
+}
+
+/* User Dashboard Cards and Forms styling in dark theme */
+body.dark-theme .shopease-user-dashboard-wrapper .card,
+body.dark-theme .shopease-user-dashboard-wrapper .custom-card {
+  background-color: var(--surface-secondary) !important;
+  border-color: var(--border) !important;
+}
+
+/* Quantity inputs on dashboard */
+body.dark-theme .shopease-user-dashboard-wrapper .form-control {
+  background-color: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Success badging */
+body.dark-theme .alert-success {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  color: #34d399 !important;
+}
+
+/* Top Selling Panel Visual Contrast Overrides */
+.shopease-top-selling-panel {
+  background-color: #f1f5f9 !important; /* Light mode contrast background */
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+body.dark-theme .shopease-top-selling-panel {
+  background-color: #0f172a !important; /* Dark mode contrast background */
+  border: 1px solid #243550 !important;
+}
+
+.shopease-top-selling-card {
+  background-color: #ffffff !important; /* Light isolated card background */
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  transition: transform 200ms ease, box-shadow 200ms ease !important;
+}
+
+.shopease-top-selling-card:hover {
+  transform: translateY(-2.5px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+}
+
+body.dark-theme .shopease-top-selling-card {
+  background-color: #17233a !important; /* Dark isolated card background */
+  border: 1px solid #334155 !important;
+}
+
+body.dark-theme .shopease-top-selling-card:hover {
+  background-color: #1c2a44 !important;
+  border-color: #3b82f6 !important;
+}
+
+/* User Profile Sidebar Drawer */
+.shopease-user-sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(2, 6, 23, 0.55);
+  z-index: 1045;
+  backdrop-filter: blur(4px);
+}
+
+.shopease-user-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background-color: var(--surface) !important;
+  border-right: 1px solid var(--border) !important;
+  z-index: 1050;
+  transform: translateX(-100%);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.shopease-user-sidebar.open {
+  transform: translateX(0);
+}
+
+body.dark-theme .shopease-user-sidebar {
+  background-color: #0b1220 !important;
+  border-right-color: #243550 !important;
+}
+
+/* User sidebar trigger button styling */
+.shopease-user-sidebar-trigger {
+  width: 45px;
+  height: 45px;
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #1e293b !important;
+  transition: all 180ms ease !important;
+  outline: none;
+}
+
+.shopease-user-sidebar-trigger:hover {
+  background-color: #f1f5f9 !important;
+  transform: scale(1.05) !important;
+}
+
+body.dark-theme .shopease-user-sidebar-trigger {
+  background-color: #17233a !important; /* Matches card inner background */
+  border-color: #334155 !important;
+  color: #f8fafc !important; /* White dots in dark mode! */
+}
+
+body.dark-theme .shopease-user-sidebar-trigger:hover {
+  background-color: #1c2a44 !important;
+  border-color: #3b82f6 !important;
+}
+
+/* User Cart Page Wrapper */
+.shopease-cart-wrapper {
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef) !important;
+  min-height: calc(100vh - 72px) !important;
+  transition: background 250ms ease !important;
+}
+
+body.dark-theme .shopease-cart-wrapper {
+  background: linear-gradient(to bottom, var(--background), var(--surface-secondary)) !important;
+}
+
+/* =========================================
+   4. ISSUE 8: CART PAGE IMAGE THUMBNAIL
+   ========================================= */
+body.dark-theme .shopease-cart-wrapper .img-thumbnail {
+  background-color: #17233a !important;
+  border-color: #334155 !important;
+}
+
+/* =========================================
+   5. ISSUE 3: LANDING PAGE DARK MODE THEME
+   ========================================= */
+body.dark-theme .shopease-hero-section {
+  background: linear-gradient(135deg, #070d1a 0%, #0f172a 100%) !important;
+}
+
+body.dark-theme .shopease-hero-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .shopease-hero-subtext {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-theme .shopease-trust-text {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-theme .shopease-avatar {
+  border-color: #0f172a !important;
+}
+
+body.dark-theme .shopease-features-bar {
+  background-color: #111c30 !important;
+  border: 1px solid #243550 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-theme .shopease-feature-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .shopease-feature-desc {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-theme .shopease-divider {
+  background-color: #243550 !important;
+}
+
+body.dark-theme .shopease-category-card {
+  background-color: #17233a !important;
+  border: 1px solid #334155 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25) !important;
+}
+
+body.dark-theme .shopease-category-card:hover {
+  background-color: #1e2e4a !important;
+  border-color: #475569 !important;
+}
+
+body.dark-theme .shopease-category-icon-bg {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark-theme .shopease-category-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .shopease-carousel-arrow {
+  background-color: #17233a !important;
+  border: 1px solid #334155 !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .shopease-carousel-arrow:hover {
+  background-color: #1e2e4a !important;
+  border-color: #6366f1 !important;
+}
+
+body.dark-theme .shopease-footer-info-bar {
+  background-color: #0b1220 !important;
+  border-top: 1px solid #243550 !important;
+}
+
+body.dark-theme .shopease-info-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .shopease-info-subtext {
+  color: var(--text-secondary) !important;
+}
+
+/* =========================================
+   6. ISSUE 4: FORM INPUTS IN DARK MODE
+   ========================================= */
+body.dark-theme select.form-select,
+body.dark-theme .form-control {
+  background-color: #17233a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme select.form-select:focus,
+body.dark-theme .form-control:focus {
+  background-color: #17233a !important;
+  border-color: #6366f1 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25) !important;
+}
+
+body.dark-theme .input-group-text {
+  background-color: #17233a !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+
+/* =========================================
+   7. ISSUE 7: PENDING APPROVALS CARD HEADER
+   ========================================= */
+.card-header-approvals {
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%) !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .card-header-approvals {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%) !important;
+  color: #f8fafc !important;
+}
+
+/* =========================================
+   8. ISSUE 12: AUTH PAGES DARK MODE
+   ========================================= */
+.shopease-auth-wrapper {
+  background-color: #f3f4f6;
+  transition: background-color 250ms ease;
+}
+
+body.dark-theme .shopease-auth-wrapper {
+  background-color: var(--background) !important;
+}
+
+body.dark-theme .shopease-auth-col {
+  background-color: transparent !important;
+}
+
+body.dark-theme .shopease-auth-card {
+  background-color: var(--surface-secondary) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .shopease-auth-card .form-control {
+  background-color: var(--surface) !important;
+  border-color: #334155 !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .shopease-auth-card .shopease-input-group {
+  background-color: var(--surface) !important;
+  border-color: #334155 !important;
+}
+
+body.dark-theme .shopease-auth-card .shopease-input-group .form-control,
+body.dark-theme .shopease-auth-card .shopease-input-group .form-select {
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+}
+
+body.dark-theme .shopease-auth-card .shopease-input-group .input-group-text {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--text-muted) !important;
+}
+
+body.dark-theme .shopease-auth-card .shopease-oauth-btn {
+  background-color: var(--surface) !important;
+  border-color: #334155 !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .shopease-auth-card .shopease-oauth-btn:hover {
+  background-color: var(--surface-tertiary, #162238) !important;
+  border-color: #475569 !important;
+}
+
+body.dark-theme .shopease-auth-card .shopease-oauth-btn i {
+  color: #f8fafc !important;
+}
+
+/* =========================================
+   TOP BANNER RESPONSIVENESS (BUG-06)
+   ========================================= */
+.shopease-top-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.shopease-top-banner .close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 0 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.shopease-top-banner .close-btn:hover {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .shopease-top-banner {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+  }
+}
+
+/* =========================================
+   USER DASHBOARD 3-DOT MENU & DRAWER (BUG-03)
+   ========================================= */
+.user-menu-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  transition: all 0.2s ease;
+}
+
+.user-menu-btn:hover {
+  background: var(--surface-secondary);
+}
+
+body.dark-theme .user-menu-btn {
+  border-color: var(--border);
+  color: var(--text-primary);
+  background: var(--surface);
+}
+
+body.dark-theme .user-menu-btn:hover {
+  background: var(--surface-secondary);
+}
+
+/* =========================================
+   TOP SELLING CARD ISOLATION (BUG-04)
+   ========================================= */
+.shopease-top-selling-panel {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.shopease-top-selling-card {
+  background: var(--surface-secondary) !important;
+  border: 1px solid var(--border) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shopease-top-selling-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+body.dark-theme .shopease-top-selling-card {
+  background: var(--surface-secondary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* =========================================
+   PENDING APPROVALS CARD (BUG-12)
+   ========================================= */
+.card-header-approvals {
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  color: #ffffff;
+}
+
+body.dark-theme .card-header-approvals {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border) !important;
+}

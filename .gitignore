@@ -1,0 +1,53 @@
+# ==========================================
+# ShopEase — Git Ignore Configuration
+# ==========================================
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS Generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ==========================================
+# Backend (Spring Boot / Maven)
+# ==========================================
+inventory-backend/target/
+inventory-backend/.mvn/wrapper/maven-wrapper.jar
+inventory-backend/uploads/
+inventory-backend/help.md
+
+# ==========================================
+# Frontend (React)
+# ==========================================
+inventory-frontend/node_modules/
+inventory-frontend/build/
+inventory-frontend/.env.local
+inventory-frontend/.env.development.local
+inventory-frontend/.env.test.local
+inventory-frontend/.env.production.local
+
+# ==========================================
+# Python AI Service
+# ==========================================
+inventory-ai-service/__pycache__/
+inventory-ai-service/venv/
+inventory-ai-service/env/
+inventory-ai-service/.env
+*.pyc
+*.pyo
+*.pyd
+
+# Temporary test scripts
+scratch/
