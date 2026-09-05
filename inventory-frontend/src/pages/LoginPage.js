@@ -37,8 +37,6 @@ function LoginPage() {
 
         setLoading(true); // Start loading
 
-        console.log("ATTEMPTING TO SEND:", { email, password });
-
         try {
             const response = await axios.post('/api/auth/login', { email, password });
 
