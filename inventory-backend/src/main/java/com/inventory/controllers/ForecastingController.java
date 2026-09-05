@@ -5,6 +5,7 @@ import com.inventory.payload.ForecastDTO;
 import com.inventory.repositories.ProductRepository;
 import com.inventory.services.ReportService; // <--- Import ReportService
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -17,8 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-// <--- 2. Add this annotation to allow React (port 3000) to access this controller
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin(originPatterns = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/forecast")
 @PreAuthorize("hasRole('ADMIN') or hasRole('STORE_MANAGER')")
@@ -26,10 +26,12 @@ public class ForecastingController {
 
     @Autowired
     private ProductRepository productRepository;
-@Autowired
+
+    @Autowired
     private ReportService reportService;
-    // This is the URL of your Python AI service
-    private final String PYTHON_SERVICE_URL = "http://localhost:5000/forecast";
+
+    @Value("${ai.service.url:http://localhost:5000/forecast}")
+    private String pythonServiceUrl;
 
     @GetMapping
     public ResponseEntity<List<ForecastDTO>> getFullForecast() {
@@ -44,7 +46,7 @@ public class ForecastingController {
                 Map<String, String> requestBody = Map.of("productId", product.getId());
                 
                 // Ensure Python service is running on port 5000!
-                Map<String, Object> aiResponse = restTemplate.postForObject(PYTHON_SERVICE_URL, requestBody, Map.class);
+                Map<String, Object> aiResponse = restTemplate.postForObject(pythonServiceUrl, requestBody, Map.class);
                 
                 int forecastDemand = (int) aiResponse.get("total_forecast");
                 List<Map<String, Object>> trendData = (List<Map<String, Object>>) aiResponse.get("trend_data");

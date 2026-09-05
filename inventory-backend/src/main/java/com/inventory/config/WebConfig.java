@@ -32,9 +32,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // Allow React (port 3000) to call any endpoint starting with /api/
+        // Allow React (local port 3000 & hosted Vercel/Render) to call any endpoint starting with /api/
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:3000") 
+                .allowedOriginPatterns("*") 
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Explicitly allow OPTIONS
                 .allowedHeaders("*") // Allow all headers (like Authorization)
                 .allowCredentials(true)
