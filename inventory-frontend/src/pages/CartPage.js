@@ -25,11 +25,10 @@ function CartPage() {
 
             console.log("Received basicCart from backend:", basicCart); // Log the raw response
 
-            // Check the condition carefully
-            if (!basicCart || basicCart.length === 0) {
+            // Check the condition carefully (ensure it is a valid array)
+            if (!basicCart || !Array.isArray(basicCart) || basicCart.length === 0) {
                 console.log("BasicCart is empty, setting cartItems to []"); // Log empty check
                 setCartItems([]);
-                // setLoading(false); // No need to set loading false here, finally block handles it
                 return; // Exit early if cart is empty
             }
 

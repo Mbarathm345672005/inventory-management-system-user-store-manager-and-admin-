@@ -5,8 +5,10 @@ const getToken = () => {
     return localStorage.getItem('token');
 };
 
-// Create an 'axios' instance with the auth header
-const authAxios = axios.create();
+// Create an 'axios' instance with the auth header and baseURL
+const authAxios = axios.create({
+    baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080',
+});
 
 authAxios.interceptors.request.use(
     (config) => {

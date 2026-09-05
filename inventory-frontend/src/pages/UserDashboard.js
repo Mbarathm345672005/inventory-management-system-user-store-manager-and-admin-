@@ -35,7 +35,7 @@ function UserDashboard() {
         setAlertMessage({ type: '', text: '' });
         ProductService.getAllProducts()
             .then(response => {
-                setProducts(response.data);
+                setProducts(Array.isArray(response.data) ? response.data : []);
             })
             .catch(error => {
                 console.error("Error fetching products:", error);
@@ -198,7 +198,7 @@ function UserDashboard() {
                     )}
  
                     <Row xs={1} sm={2} md={3} lg={4} className="g-4">
-                        {products.map(product => (
+                        {Array.isArray(products) && products.map(product => (
                             <Col key={product.id}>
                                 <Card className="h-100 custom-card border-0 shadow-sm">
                                     {/* Image Section */}

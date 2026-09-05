@@ -10,19 +10,20 @@ function TopSellingProducts({ onProductClick }) {
 
     useEffect(() => {
         // Fetch the top-selling products when the component mounts
-        ProductService.getTopSelling() // This line will now work
+        ProductService.getTopSelling()
             .then(response => {
-                setTopProducts(response.data);
+                setTopProducts(Array.isArray(response.data) ? response.data : []);
                 setLoading(false);
             })
             .catch(error => {
                 console.error("Error fetching top selling products:", error);
+                setTopProducts([]);
                 setLoading(false);
             });
     }, []); // The empty array means this runs once
 
     // Don't show anything if loading
-    if (loading && !topProducts.length) { // Only show spinner if there's nothing to display
+    if (loading && (!Array.isArray(topProducts) || !topProducts.length)) {
         return (
             <div className="text-center my-4">
                 <Spinner animation="border" variant="primary" />
@@ -32,7 +33,7 @@ function TopSellingProducts({ onProductClick }) {
     }
 
     // Don't show the section if there are no top sellers
-    if (!topProducts.length) {
+    if (!Array.isArray(topProducts) || !topProducts.length) {
         return null; // Return nothing if no top sellers
     }
 
