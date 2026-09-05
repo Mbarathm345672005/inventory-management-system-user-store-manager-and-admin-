@@ -117,7 +117,7 @@ public class ForecastingController {
         for (Product product : products) {
             try {
                 Map<String, String> requestBody = Map.of("productId", product.getId());
-                Map<String, Object> aiResponse = restTemplate.postForObject(PYTHON_SERVICE_URL, requestBody, Map.class);
+                Map<String, Object> aiResponse = restTemplate.postForObject(pythonServiceUrl, requestBody, Map.class);
                 
                 int forecastDemand = (int) aiResponse.get("total_forecast");
                 // We don't strictly need trendData for the Excel summary, but good to have
