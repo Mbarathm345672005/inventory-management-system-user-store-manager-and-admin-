@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table, Badge, Button, Spinner, Modal, Alert } from 'react-bootstrap';
-// We assume you have an auth-header helper, if not, standard axios works too
-import axios from 'axios'; 
 import ForecastChart from './ForecastChart';
 import ForecastService from '../services/forecast.service'; // Import the new chart component
 
@@ -20,21 +18,17 @@ function ForecastingPage() {
 
     const fetchForecast = () => {
         setLoading(true);
-        // Get token from local storage
-        const token = localStorage.getItem('token'); 
-        
-        axios.get('http://localhost:8080/api/forecast', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-        .then(response => {
-            setForecasts(response.data);
-            setLoading(false);
-        })
-        .catch(err => {
-            console.error("Error fetching forecast:", err);
-            setError("Failed to load forecast data. Ensure all 3 services (React, Java, Python) are running.");
-            setLoading(false);
-        });
+        setError('');
+        ForecastService.getFullForecast()
+            .then(response => {
+                setForecasts(Array.isArray(response.data) ? response.data : []);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Error fetching forecast:", err);
+                setError("Failed to load forecast data. Ensure all 3 services (React, Java, Python) are running.");
+                setLoading(false);
+            });
     };
 
     // Helper function to open the chart modal
