@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Nav, Spinner, InputGroup, Form, Badge, Dropdown, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Nav, Spinner, InputGroup, Form, Badge, Dropdown, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import NotificationService from '../services/notification.service'; 
 
@@ -41,8 +41,6 @@ const AdminLayout = () => {
         }
         return location.pathname.startsWith(path);
     };
-
-    const sidebarTitle = role === 'ROLE_ADMIN' ? 'Admin Panel' : 'Store Manager';
 
     // Theme Switch Effect
     useEffect(() => {
@@ -103,6 +101,7 @@ const AdminLayout = () => {
     useEffect(() => {
         const cleanup = startPolling();
         return cleanup;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const formatTime = (timestamp) => {

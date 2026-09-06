@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductService from '../../services/product.service';
-import { Row, Col, Form, Button, Table, Alert, Card, Spinner } from 'react-bootstrap';
+import { Row, Col, Form, Button, Alert, Card, Spinner } from 'react-bootstrap';
 
 function ManageProducts() {
     // --- State Hooks ---

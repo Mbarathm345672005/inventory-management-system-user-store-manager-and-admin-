@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductService from '../services/product.service';
 import { Card, Row, Col, Spinner, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 // A component to fetch and display top-selling products
 function TopSellingProducts({ onProductClick }) {

@@ -13,4 +13,5 @@ const getAllNotifications = () => authAxios.get('/api/notifications');
 const getUnreadCount = () => authAxios.get('/api/notifications/unread-count');
 const markAsRead = (id) => authAxios.put(`/api/notifications/${id}/read`);
 
-export default { getAllNotifications, getUnreadCount, markAsRead };
+const NotificationService = { getAllNotifications, getUnreadCount, markAsRead };
+export default NotificationService;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
-import { Container, Navbar as BootstrapNavbar, Nav, Button, Row, Col, Card, Image, Badge } from 'react-bootstrap';
+import { Container, Navbar as BootstrapNavbar, Nav, Button, Row, Col, Image } from 'react-bootstrap';
 import 'animate.css';
 import ManageStoreManagers from './pages/admin/ManageStoreManagers';
 
@@ -15,9 +15,7 @@ import ResetPasswordPage from './pages/ResetPasswordPage';
 import ForecastingPage from './pages/ForecastingPage';
 import RestockPage from './pages/RestockPage';
 import './App.css';
-import NotificationService from './services/notification.service'; 
 import AlertsPage from './pages/AlertsPage';
-import ProductService from './services/product.service';
 // --- Admin Component Imports ---
 import AdminLayout from './components/AdminLayout';
 import AdminHome from './pages/admin/AdminHome';
@@ -32,7 +30,6 @@ function Navbar() {
     const location = useLocation();
     const role = localStorage.getItem('role');
     const token = localStorage.getItem('token');
-    const [cartCount, setCartCount] = React.useState(0);
     const [showBanner, setShowBanner] = React.useState(true);
 
     const [darkMode, setDarkMode] = React.useState(() => {

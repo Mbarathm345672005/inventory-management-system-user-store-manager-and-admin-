@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NotificationService from '../services/notification.service';
-import { Container, Button, Badge, Spinner, Alert, Card, Row, Col } from 'react-bootstrap';
+import { Container, Spinner, Alert, Card } from 'react-bootstrap';
 
 function AlertsPage() {
     const [alerts, setAlerts] = useState([]);

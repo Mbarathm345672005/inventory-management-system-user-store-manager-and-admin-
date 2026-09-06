@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Form, Button, Alert, Row, Col, Card, Spinner } from 'react-bootstrap';
 
 function ResetPasswordPage() {

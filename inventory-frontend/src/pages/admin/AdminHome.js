@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Button, Spinner } from 'react-bootstrap';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import ProductService from '../../services/product.service';
 
 function AdminHome() {
