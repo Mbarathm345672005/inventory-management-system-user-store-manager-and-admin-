@@ -62,15 +62,6 @@ function Navbar() {
         };
     }, []);
 
-    React.useEffect(() => {
-        if (token && role === 'ROLE_USER') {
-            ProductService.getCart()
-                .then(res => {
-                    if (res.data) setCartCount(res.data.length);
-                })
-                .catch(err => console.log(err));
-        }
-    }, [token, role]);
 
     const isAuthPage = ['/login', '/signup', '/forgot-password'].includes(location.pathname) || location.pathname.startsWith('/reset-password');
     const isAdminPage = location.pathname.startsWith('/admin');
